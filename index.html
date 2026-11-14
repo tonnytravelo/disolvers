@@ -1,0 +1,3482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dissolvers — Distribution in India and across the globe, built through people.</title>
+  <meta name="description" content="Dissolvers helps organizations build distribution in India and across the globe through ecosystem partnerships, community, builder programmes, events, content and data-driven consultation." />
+  <meta property="og:title" content="Dissolvers — Distribution in India and across the globe, built through people." />
+  <meta property="og:description" content="Ecosystem partnerships, communities, builder programmes, events and consultation for organizations entering India and scaling globally." />
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/dissolvers/logo.png" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Google Fonts: Instrument Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. BRAND & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      --brand-name: "Dissolvers";
+      --navy: #142B3B;
+      --teal: #176B68;
+      --off-white: #F7F7F2;
+      --slate: #667784;
+      --yellow: #FFE600;
+      
+      --bg-primary: var(--off-white);
+      --text-primary: var(--navy);
+      --border-hairline: rgba(20, 43, 59, 0.16);
+      --border-hairline-dark: rgba(247, 247, 242, 0.16);
+
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --container-max: 1400px;
+      --gutter: clamp(1.25rem, 4vw, 3.5rem);
+      --header-height: 78px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--off-white);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    ::selection {
+      background-color: var(--yellow);
+      color: var(--navy);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Accessible Focus States */
+    :focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+    .section-navy :focus-visible {
+      outline-color: var(--yellow);
+    }
+
+    /* Skip to Content Link */
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 1rem;
+      background: var(--navy);
+      color: var(--off-white);
+      padding: 0.75rem 1.25rem;
+      z-index: 10000;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border: 1px solid var(--yellow);
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* ==========================================================================
+       3. TYPOGRAPHY & EDITORIAL ELEMENTS
+       ========================================================================== */
+    h1, h2, h3, h4, .serif {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em, h2 em, h3 em, .serif em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .display-hero {
+      font-size: clamp(3.4rem, 8.8vw, 8.25rem);
+      line-height: 0.96;
+      letter-spacing: -0.025em;
+    }
+
+    .display-xl {
+      font-size: clamp(2.75rem, 6.2vw, 5.75rem);
+      line-height: 0.98;
+    }
+
+    .display-lg {
+      font-size: clamp(2.15rem, 4.5vw, 4rem);
+      line-height: 1.04;
+    }
+
+    .display-md {
+      font-size: clamp(1.75rem, 3vw, 2.65rem);
+      line-height: 1.08;
+    }
+
+    .body-lg {
+      font-size: clamp(1.125rem, 1.4vw, 1.35rem);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .body-md {
+      font-size: 1.025rem;
+      line-height: 1.65;
+    }
+
+    .label-mono {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--slate);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-navy .label-mono {
+      color: rgba(247, 247, 242, 0.65);
+    }
+
+    .sec-num {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      border: 1px solid var(--border-hairline);
+      padding: 0.15rem 0.45rem;
+      display: inline-block;
+    }
+    .section-navy .sec-num {
+      color: var(--yellow);
+      border-color: var(--border-hairline-dark);
+    }
+
+    /* Yellow Marker Underline (Never yellow text on off-white; always dark text over marker) */
+    .marker-highlight {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+      color: var(--navy);
+      padding: 0 0.08em;
+    }
+    .marker-highlight::after {
+      content: "";
+      position: absolute;
+      left: -2%;
+      bottom: 8%;
+      width: 104%;
+      height: 30%;
+      background-color: var(--yellow);
+      z-index: -1;
+      transform: skewX(-8deg) rotate(-1deg);
+      transition: height 0.3s var(--ease-out-expo);
+    }
+    .section-navy .marker-highlight {
+      color: var(--off-white);
+    }
+    .section-navy .marker-highlight::after {
+      background-color: var(--teal);
+      height: 36%;
+    }
+
+    /* Sticker-style Rotated Pills */
+    .sticker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.38rem 0.78rem;
+      background-color: var(--yellow);
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      transform: rotate(-3deg);
+      box-shadow: 2px 2px 0px var(--navy);
+      white-space: nowrap;
+      transition: transform 0.25s var(--ease-out-expo);
+    }
+    .sticker-pill:hover {
+      transform: rotate(0deg) translateY(-2px);
+    }
+    .sticker-pill.teal-pill {
+      background-color: var(--teal);
+      color: var(--off-white);
+    }
+    .sticker-pill.offwhite-pill {
+      background-color: var(--off-white);
+      color: var(--navy);
+    }
+
+    /* ==========================================================================
+       4. LAYOUT, CONTAINERS & FILM GRAIN
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .section-pad {
+      padding-top: clamp(4.5rem, 9vw, 8.5rem);
+      padding-bottom: clamp(4.5rem, 9vw, 8.5rem);
+    }
+
+    .section-pad-sm {
+      padding-top: clamp(3rem, 5vw, 5rem);
+      padding-bottom: clamp(3rem, 5vw, 5rem);
+    }
+
+    .section-navy {
+      background-color: var(--navy);
+      color: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Very low opacity CSS film-grain overlay on dark sections */
+    .section-navy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.045;
+      background-image: 
+        repeating-radial-gradient(circle at 17% 32%, #ffffff 0, #000000 1px, transparent 2px, transparent 100%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 3px);
+      background-size: 6px 6px, 4px 4px;
+    }
+    .section-navy > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hairline Dividers & "Slice" Scroll Animation */
+    .slice-divider {
+      position: relative;
+      width: 100%;
+      height: 1px;
+      background-color: transparent;
+      overflow: visible;
+    }
+    .slice-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-hairline);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 1.1s var(--ease-out-expo);
+    }
+    .section-navy .slice-divider::before {
+      background-color: var(--border-hairline-dark);
+    }
+    .slice-divider.is-sliced::before {
+      transform: scaleX(1);
+    }
+    .slice-divider::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      width: 28px;
+      height: 7px;
+      border-top: 1px solid var(--navy);
+      border-bottom: 1px solid var(--navy);
+      background-color: var(--off-white);
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 0.6s var(--ease-out-expo) 0.45s;
+    }
+    .section-navy .slice-divider::after {
+      border-color: var(--yellow);
+      background-color: var(--navy);
+    }
+    .slice-divider.is-sliced::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    /* Asymmetric Editorial Grid Helpers */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    }
+    .col-12 { grid-column: span 12; }
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-8 { grid-column: span 8; }
+
+    @media (max-width: 960px) {
+      .col-4, .col-5, .col-6, .col-7, .col-8 {
+        grid-column: span 12;
+      }
+    }
+
+    /* ==========================================================================
+       5. BUTTONS & INTERACTIVE LINKS
+       ========================================================================== */
+    /* Primary Button: Teal fill with yellow underlay that slides in on hover */
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.9rem 1.65rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--off-white);
+      background-color: var(--teal);
+      border: 1px solid var(--navy);
+      z-index: 1;
+      transition: transform 0.25s var(--ease-out-expo), color 0.25s ease, background-color 0.25s ease;
+    }
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--yellow);
+      border: 1px solid var(--navy);
+      z-index: -1;
+      transform: translate(0, 0);
+      transition: transform 0.28s var(--ease-out-expo);
+      pointer-events: none;
+    }
+    .btn-primary span, .btn-primary svg {
+      position: relative;
+      z-index: 2;
+    }
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--teal);
+      z-index: 1;
+      transition: background-color 0.25s ease;
+    }
+    .btn-primary:hover {
+      transform: translate(-4px, -4px);
+    }
+    .btn-primary:hover::before {
+      transform: translate(8px, 8px);
+    }
+    .section-navy .btn-primary {
+      border-color: rgba(247, 247, 242, 0.35);
+    }
+
+    /* Secondary Outlined Editorial Button */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.9rem 1.65rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      background-color: transparent;
+      border: 1px solid var(--navy);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .btn-outline:hover {
+      background-color: var(--navy);
+      color: var(--off-white);
+    }
+    .section-navy .btn-outline {
+      color: var(--off-white);
+      border-color: var(--border-hairline-dark);
+    }
+    .section-navy .btn-outline:hover {
+      background-color: var(--off-white);
+      color: var(--navy);
+    }
+
+    .text-link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 0.15rem;
+      transition: gap 0.25s var(--ease-out-expo), border-color 0.2s ease;
+    }
+    .text-link-arrow:hover {
+      gap: 0.75rem;
+      border-bottom-color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       6. STICKY HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: rgba(247, 247, 242, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-hairline);
+      z-index: 900;
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-wrap {
+      height: 38px;
+      width: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      line-height: 1;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    /* Desktop Nav */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.85rem;
+    }
+
+    .nav-item {
+      position: relative;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 0.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-item::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s var(--ease-out-expo);
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Services Dropdown */
+    .nav-dropdown-wrapper {
+      position: relative;
+    }
+
+    .nav-dropdown-trigger {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 0.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: -1rem;
+      width: 320px;
+      background-color: var(--off-white);
+      border: 1px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--navy);
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 950;
+    }
+
+    /* Invisible hover bridge so moving mouse from trigger to menu never loses hover */
+    .nav-dropdown-menu::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+      background: transparent;
+    }
+
+    .nav-dropdown-wrapper:hover .nav-dropdown-menu,
+    .nav-dropdown-wrapper:focus-within .nav-dropdown-menu,
+    .nav-dropdown-wrapper.is-open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .dropdown-link {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.84rem;
+      color: var(--navy);
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color 0.15s ease, padding-left 0.2s ease;
+    }
+    .dropdown-link:last-child {
+      border-bottom: none;
+    }
+    .dropdown-link:hover, .dropdown-link:focus-visible {
+      background-color: var(--navy);
+      color: var(--off-white);
+      padding-left: 1.5rem;
+    }
+    .dropdown-link .num {
+      font-size: 0.7rem;
+      color: var(--teal);
+      font-weight: 600;
+    }
+    .dropdown-link:hover .num {
+      color: var(--yellow);
+    }
+
+    /* Mobile Hamburger & Full-Screen Overlay */
+    .mobile-menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-hairline);
+    }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: var(--navy);
+      color: var(--off-white);
+      z-index: 980;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: calc(var(--header-height) + 1.5rem) var(--gutter) 2.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+      overflow-y: auto;
+    }
+    .mobile-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-hairline-dark);
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid var(--border-hairline-dark);
+    }
+
+    .mobile-nav-link, .mobile-accordion-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 0;
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--off-white);
+      text-align: left;
+    }
+
+    .mobile-accordion-panel {
+      display: none;
+      padding: 0.25rem 0 1rem 1rem;
+      border-left: 1px solid var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .mobile-accordion-panel.is-open {
+      display: block;
+    }
+    .mobile-sub-link {
+      display: block;
+      padding: 0.55rem 0;
+      font-size: 0.95rem;
+      color: rgba(247, 247, 242, 0.85);
+    }
+    .mobile-sub-link:hover {
+      color: var(--yellow);
+    }
+
+    @media (max-width: 1040px) {
+      .desktop-nav, .header-cta-desktop {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+    }
+
+    /* ==========================================================================
+       7. SIGNATURE MOTIF: "THE SPLIT" HERO & ROTATING BADGE
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding-top: clamp(3.5rem, 7vw, 6.5rem);
+      padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    /* Decorative Split Circle Background Motif with Crowd Photos & Floating Words */
+    .split-circle-stage {
+      position: relative;
+      width: 100%;
+      padding: 1.5rem 0;
+    }
+
+    .split-hemisphere {
+      width: clamp(290px, 56vw, 760px);
+      height: clamp(145px, 28vw, 380px);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      pointer-events: none;
+      transition: transform 1.05s var(--ease-out-expo);
+      background-color: var(--navy);
+    }
+
+    .split-hemisphere img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.82;
+      filter: contrast(1.06) saturate(0.92);
+      transition: transform 6s ease;
+    }
+
+    .hero-split-loaded .split-hemisphere img {
+      transform: scale(1.05);
+    }
+
+    .split-hemisphere::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 43, 59, 0.25);
+      pointer-events: none;
+    }
+
+    .split-hemisphere-top {
+      border-top-left-radius: 999px;
+      border-top-right-radius: 999px;
+      border: 2px solid var(--navy);
+      margin-bottom: -1px;
+      transform: translateY(0);
+    }
+
+    .split-hemisphere-bottom {
+      border-bottom-left-radius: 999px;
+      border-bottom-right-radius: 999px;
+      border: 2px solid var(--navy);
+      transform: translateY(0);
+    }
+
+    /* Live One-Word Service Animations Floating Around the Circle */
+    .floating-words-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .float-service-word {
+      position: absolute;
+      font-family: var(--font-sans);
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 0.45rem 0.9rem;
+      background-color: var(--off-white);
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      box-shadow: 3px 3px 0px var(--yellow);
+      white-space: nowrap;
+      animation: floatWordBob 5s ease-in-out infinite;
+    }
+
+    .float-service-word:nth-child(even) {
+      background-color: var(--navy);
+      color: var(--off-white);
+      box-shadow: 3px 3px 0px var(--teal);
+    }
+
+    .float-service-word.fw-1 { top: 6%; left: 12%; animation-delay: 0s; }
+    .float-service-word.fw-2 { top: 14%; right: 10%; animation-delay: -1.1s; }
+    .float-service-word.fw-3 { top: 46%; left: 3%; animation-delay: -2.3s; }
+    .float-service-word.fw-4 { top: 48%; right: 3%; animation-delay: -0.7s; }
+    .float-service-word.fw-5 { bottom: 14%; left: 10%; animation-delay: -3.2s; }
+    .float-service-word.fw-6 { bottom: 8%; right: 12%; animation-delay: -1.8s; }
+    .float-service-word.fw-7 { top: 2%; left: 46%; animation-delay: -2.7s; background-color: var(--yellow); color: var(--navy); box-shadow: 3px 3px 0px var(--navy); }
+
+    @keyframes floatWordBob {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    @media (max-width: 768px) {
+      .float-service-word {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.6rem;
+      }
+      .float-service-word.fw-3,
+      .float-service-word.fw-4 {
+        display: none;
+      }
+    }
+
+    /* Events Hero Media Grid & Table Thumbnails */
+    .events-media-hero {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+    .events-media-card {
+      position: relative;
+      border: 1px solid var(--navy);
+      overflow: hidden;
+      background-color: var(--navy);
+      min-height: 260px;
+    }
+    .events-media-card img,
+    .events-media-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease-out-expo);
+    }
+    .events-media-card:hover img,
+    .events-media-card:hover video {
+      transform: scale(1.04);
+    }
+    .events-media-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(to top, rgba(20,43,59,0.92), transparent);
+      color: var(--off-white);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .event-table-photo {
+      width: 96px;
+      height: 62px;
+      object-fit: cover;
+      border: 1px solid var(--navy);
+      box-shadow: 3px 3px 0px var(--yellow);
+      display: block;
+    }
+
+    /* When loaded, the two halves slide apart slightly and reveal the headline */
+    .hero-split-loaded .split-hemisphere-top {
+      transform: translateY(-18px);
+    }
+    .hero-split-loaded .split-hemisphere-bottom {
+      transform: translateY(18px);
+    }
+
+    .hero-headline-reveal {
+      position: relative;
+      z-index: 2;
+      padding: clamp(1.25rem, 2.5vw, 2.25rem) 0;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.9s var(--ease-out-expo) 0.18s, transform 0.9s var(--ease-out-expo) 0.18s;
+    }
+    .hero-split-loaded .hero-headline-reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Rotating Circular SVG Badge */
+    .rotating-badge-wrap {
+      width: 116px;
+      height: 116px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rotating-badge-svg {
+      width: 100%;
+      height: 100%;
+      animation: spinBadge 18s linear infinite;
+    }
+
+    .rotating-badge-center {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--navy);
+      background-color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rotating-badge-center::after {
+      content: "";
+      width: 18px;
+      height: 1.5px;
+      background-color: var(--navy);
+      transform: rotate(-18deg);
+    }
+
+    @keyframes spinBadge {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================================
+       8. MARQUEES
+       ========================================================================== */
+    .marquee-strip {
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 1.15rem 0;
+      overflow: hidden;
+      background-color: var(--off-white);
+      display: flex;
+      align-items: center;
+    }
+
+    .marquee-strip.navy-marquee {
+      background-color: var(--navy);
+      color: var(--off-white);
+      border-color: var(--border-hairline-dark);
+      padding: 1.4rem 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 34s linear infinite;
+    }
+
+    .marquee-strip:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 2.75rem;
+      padding-right: 2.75rem;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      font-family: var(--font-serif);
+      font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 2.75rem;
+    }
+
+    .marquee-item::after {
+      content: "/";
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .navy-marquee .marquee-item {
+      color: var(--off-white);
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+    }
+    .navy-marquee .marquee-item::after {
+      content: "•";
+      color: var(--yellow);
+      font-size: 1.25rem;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       9. SERVICE ROWS (INTERACTIVE HOVER)
+       ========================================================================== */
+    .service-list {
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 60px 1.25fr 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: clamp(1.6rem, 3vw, 2.5rem) 1.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      color: var(--navy);
+      transition: background-color 0.3s var(--ease-out-expo), color 0.3s ease, padding-left 0.3s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-row-num {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+      transition: color 0.25s ease;
+    }
+
+    .service-row-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+      line-height: 1.05;
+      transition: transform 0.35s var(--ease-out-expo);
+    }
+
+    .service-row-desc {
+      font-size: 0.95rem;
+      color: var(--slate);
+      transition: color 0.3s ease, transform 0.35s var(--ease-out-expo);
+    }
+
+    .service-row-slide {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--yellow);
+      margin-top: 0.35rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+    }
+
+    .service-row-arrow {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-hairline);
+      color: var(--navy);
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-out-expo);
+    }
+
+    .service-row:hover,
+    .service-row:focus-visible {
+      background-color: var(--navy);
+      color: var(--off-white);
+    }
+    .service-row:hover .service-row-num,
+    .service-row:focus-visible .service-row-num {
+      color: var(--yellow);
+    }
+    .service-row:hover .service-row-title,
+    .service-row:focus-visible .service-row-title {
+      transform: translateX(14px);
+    }
+    .service-row:hover .service-row-desc,
+    .service-row:focus-visible .service-row-desc {
+      color: rgba(247, 247, 242, 0.82);
+    }
+    .service-row:hover .service-row-slide,
+    .service-row:focus-visible .service-row-slide {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .service-row:hover .service-row-arrow,
+    .service-row:focus-visible .service-row-arrow {
+      background-color: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--navy);
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 860px) {
+      .service-row {
+        grid-template-columns: 40px 1fr auto;
+      }
+      .service-row-desc {
+        grid-column: 2 / 4;
+      }
+    }
+
+    /* ==========================================================================
+       10. BENTO GRID (FOUNDER EXPERIENCE HIGHLIGHTS)
+       ========================================================================== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      border-top: 1px solid var(--border-hairline);
+      border-left: 1px solid var(--border-hairline);
+    }
+
+    .bento-cell {
+      border-right: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: clamp(1.75rem, 3.2vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      background-color: var(--off-white);
+      transition: background-color 0.25s ease;
+    }
+    .bento-cell:hover {
+      background-color: rgba(23, 107, 104, 0.04);
+    }
+    .bento-cell.bento-dark {
+      background-color: var(--navy);
+      color: var(--off-white);
+    }
+
+    .bento-span-7 { grid-column: span 7; }
+    .bento-span-5 { grid-column: span 5; }
+    .bento-span-4 { grid-column: span 4; }
+    .bento-span-8 { grid-column: span 8; }
+
+    .bento-stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 6.5vw, 5.75rem);
+      line-height: 0.92;
+      color: var(--navy);
+    }
+    .bento-dark .bento-stat-number {
+      color: var(--yellow);
+    }
+
+    @media (max-width: 900px) {
+      .bento-span-7, .bento-span-5, .bento-span-4, .bento-span-8 {
+        grid-column: span 12;
+      }
+    }
+
+    /* ==========================================================================
+       11. HOW WE WORK HORIZONTAL DIAGRAM
+       ========================================================================== */
+    .process-line-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 2.5rem;
+      gap: 2rem;
+    }
+
+    .process-node {
+      position: relative;
+      padding-right: 1rem;
+    }
+
+    .process-node-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--off-white);
+      border: 1px solid var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      margin-top: -3.65rem;
+      transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .process-node:hover .process-node-dot {
+      background-color: var(--yellow);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 860px) {
+      .process-line-grid {
+        grid-template-columns: 1fr;
+        border-top: none;
+        border-left: 1px solid var(--border-hairline);
+        padding-top: 0;
+        padding-left: 2rem;
+      }
+      .process-node-dot {
+        margin-top: 0;
+        margin-left: -3.15rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    /* ==========================================================================
+       12. TABLES, WORK SECTIONS & INSIGHT ARTICLES
+       ========================================================================== */
+    .hairline-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .hairline-table th,
+    .hairline-table td {
+      text-align: left;
+      padding: 1.2rem 0.75rem;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.95rem;
+    }
+
+    .hairline-table th {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .hairline-table tr:hover td {
+      background-color: rgba(20, 43, 59, 0.03);
+    }
+
+    .work-entry {
+      border-top: 1px solid var(--border-hairline);
+      padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+    }
+
+    .fact-list {
+      border-top: 1px solid var(--border-hairline);
+    }
+    .fact-list li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+    .fact-list li::before {
+      content: "—";
+      color: var(--teal);
+      margin-right: 0.5rem;
+      font-weight: 600;
+    }
+    .fact-list li span {
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       13. CONTACT FORM
+       ========================================================================== */
+    .editorial-form {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--navy);
+      background-color: transparent;
+      font-size: 1rem;
+      color: var(--navy);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 4px 4px 0px var(--yellow);
+    }
+
+    /* ==========================================================================
+       14. FOOTER & GIANT OUTLINED WORDMARK
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--navy);
+      color: var(--off-white);
+      border-top: 1px solid var(--border-hairline-dark);
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-giant-wordmark {
+      font-family: var(--font-serif);
+      font-size: clamp(4.2rem, 17.5vw, 16.5rem);
+      line-height: 0.86;
+      text-align: center;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(247, 247, 242, 0.35);
+      padding: 1.5rem 0 0.5rem;
+      user-select: none;
+      transition: color 0.45s var(--ease-out-expo), -webkit-text-stroke-color 0.45s ease;
+      cursor: pointer;
+    }
+    .footer-giant-wordmark:hover {
+      color: var(--yellow);
+      -webkit-text-stroke-color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       15. PAGE TRANSITION OVERLAY & CUSTOM CURSOR
+       ========================================================================== */
+    .page-wipe-line {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--yellow);
+      z-index: 9999;
+      transform: scaleX(0);
+      transform-origin: left;
+      pointer-events: none;
+    }
+    .page-wipe-line.is-wiping {
+      animation: lineWipe 0.45s var(--ease-out-expo) forwards;
+    }
+    @keyframes lineWipe {
+      0% { transform: scaleX(0); transform-origin: left; }
+      50% { transform: scaleX(1); transform-origin: left; }
+      50.1% { transform: scaleX(1); transform-origin: right; }
+      100% { transform: scaleX(0); transform-origin: right; }
+    }
+
+    .page-view {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.28s ease;
+    }
+    .page-view.is-active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Custom Cursor (Desktop Only) */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background-color: var(--navy);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.22s var(--ease-out-expo), height 0.22s var(--ease-out-expo), background-color 0.22s ease, border 0.22s ease;
+    }
+    .custom-cursor.is-hovered {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(255, 230, 0, 0.22);
+      border: 2px solid var(--yellow);
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .custom-cursor {
+        display: none !important;
+      }
+    }
+
+    /* Explicit opt-in class if reduced motion is toggled */
+    html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Page Transition Horizontal Line Wipe -->
+  <div id="page-wipe" class="page-wipe-line" aria-hidden="true"></div>
+
+  <!-- Custom Cursor (Desktop) -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       STICKY HEADER
+       ========================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <!-- Brand Logo & Wordmark -->
+      <a href="#/" class="brand-link" aria-label="Dissolvers Home">
+        <span class="brand-logo-wrap">
+          <img 
+            src="logo.png" 
+            alt="Dissolvers logo" 
+            class="brand-logo-img"
+          />
+        </span>
+        <span class="brand-wordmark" data-brand-text>Dissolvers</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <div class="nav-dropdown-wrapper" id="services-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" id="services-dropdown-btn">
+            <span>Services</span>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu" aria-label="Services Submenu">
+            <a href="#/services" class="dropdown-link" role="menuitem">
+              <span class="num">ALL</span>
+              <span>Services Overview</span>
+            </a>
+            <a href="#/services/market-entry" class="dropdown-link" role="menuitem">
+              <span class="num">01</span>
+              <span>India Market Entry Sprint</span>
+            </a>
+            <a href="#/services/partnerships" class="dropdown-link" role="menuitem">
+              <span class="num">02</span>
+              <span>Partnerships &amp; Channel Development</span>
+            </a>
+            <a href="#/services/ecosystem-community" class="dropdown-link" role="menuitem">
+              <span class="num">03</span>
+              <span>Ecosystem &amp; Community Growth</span>
+            </a>
+            <a href="#/services/builder-programmes" class="dropdown-link" role="menuitem">
+              <span class="num">04</span>
+              <span>Builder Programmes &amp; Hackathons</span>
+            </a>
+            <a href="#/services/events-activations" class="dropdown-link" role="menuitem">
+              <span class="num">05</span>
+              <span>Events &amp; Launch Activations</span>
+            </a>
+            <a href="#/services/content-narrative" class="dropdown-link" role="menuitem">
+              <span class="num">06</span>
+              <span>Content &amp; Narrative</span>
+            </a>
+            <a href="#/services/consultation" class="dropdown-link" role="menuitem">
+              <span class="num">07</span>
+              <span>Consultation</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#/work" class="nav-item" data-nav-route="/work">Work</a>
+        <a href="#/events" class="nav-item" data-nav-route="/events">Events</a>
+        <a href="#/how-we-work" class="nav-item" data-nav-route="/how-we-work">How We Work</a>
+        <a href="#/insights" class="nav-item" data-nav-route="/insights">Insights</a>
+        <a href="#/about" class="nav-item" data-nav-route="/about">About</a>
+        <a href="#/contact" class="nav-item" data-nav-route="/contact">Contact</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="header-cta-desktop">
+        <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <span>Book an Intro Call</span>
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Trigger -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-overlay">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="3" y1="7" x2="21" y2="7"></line>
+          <line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+        <svg id="menu-icon-close" style="display:none;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Full-Screen Overlay Menu -->
+  <div id="mobile-overlay" class="mobile-overlay" aria-hidden="true">
+    <nav aria-label="Mobile Navigation">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <button type="button" class="mobile-accordion-btn" id="mobile-services-acc" aria-expanded="false">
+            <span>Services</span>
+            <span style="font-family:var(--font-sans); font-size:1rem; color:var(--yellow);">+</span>
+          </button>
+          <div class="mobile-accordion-panel" id="mobile-services-panel">
+            <a href="#/services" class="mobile-sub-link">All Services Overview</a>
+            <a href="#/services/market-entry" class="mobile-sub-link">01 — India Market Entry Sprint</a>
+            <a href="#/services/partnerships" class="mobile-sub-link">02 — Partnerships &amp; Channel Development</a>
+            <a href="#/services/ecosystem-community" class="mobile-sub-link">03 — Ecosystem &amp; Community Growth</a>
+            <a href="#/services/builder-programmes" class="mobile-sub-link">04 — Builder Programmes &amp; Hackathons</a>
+            <a href="#/services/events-activations" class="mobile-sub-link">05 — Events &amp; Launch Activations</a>
+            <a href="#/services/content-narrative" class="mobile-sub-link">06 — Content &amp; Narrative</a>
+            <a href="#/services/consultation" class="mobile-sub-link">07 — Consultation</a>
+          </div>
+        </li>
+        <li class="mobile-nav-item"><a href="#/work" class="mobile-nav-link">Work</a></li>
+        <li class="mobile-nav-item"><a href="#/events" class="mobile-nav-link">Events</a></li>
+        <li class="mobile-nav-item"><a href="#/how-we-work" class="mobile-nav-link">How We Work</a></li>
+        <li class="mobile-nav-item"><a href="#/insights" class="mobile-nav-link">Insights</a></li>
+        <li class="mobile-nav-item"><a href="#/about" class="mobile-nav-link">About</a></li>
+        <li class="mobile-nav-item"><a href="#/contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div style="padding-top: 2rem;">
+      <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;">
+        <span>Book an Intro Call</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN ROUTER CONTAINER
+       ========================================================================== -->
+  <main id="main-content" role="main">
+
+    <!-- ========================================================================
+         VIEW 1: HOME (#/)
+         ======================================================================== -->
+    <section id="view-home" class="page-view is-active" data-route="/">
+      <!-- 1. HERO SECTION WITH "THE SPLIT" -->
+      <div class="hero-section" id="hero-split-container">
+        <div class="container">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem;">
+            <span class="label-mono"><span class="sec-num">00</span> GLOBAL DISTRIBUTION &amp; ECOSYSTEM OPERATIONS</span>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="sticker-pill">Helping Founders</span>
+              <span class="sticker-pill teal-pill">Go Global</span>
+            </div>
+          </div>
+
+          <!-- Split Circle Stage with Crowd Images & Floating One-Word Services -->
+          <div class="split-circle-stage">
+            <div class="floating-words-layer" aria-hidden="true">
+              <span class="float-service-word fw-1">Partnerships</span>
+              <span class="float-service-word fw-2">Communities</span>
+              <span class="float-service-word fw-3">Builders</span>
+              <span class="float-service-word fw-4">Events</span>
+              <span class="float-service-word fw-5">Content</span>
+              <span class="float-service-word fw-6">Roadmaps</span>
+              <span class="float-service-word fw-7">Consultation</span>
+            </div>
+
+            <div class="split-hemisphere split-hemisphere-top" aria-hidden="true">
+              <img 
+                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80" 
+                alt="Packed conference crowd at builder event"
+                onerror="this.src='https://placehold.co/900x450/142B3B/FFE600?text=Builder+Summit+Crowd'"
+              />
+            </div>
+
+            <div class="hero-headline-reveal" style="text-align: center;">
+              <h1 class="display-hero" style="max-width: 18ch; margin: 0 auto;">
+                Distribution in <span class="marker-highlight">India</span> and across the globe, <em>built through people.</em>
+              </h1>
+            </div>
+
+            <div class="split-hemisphere split-hemisphere-bottom" aria-hidden="true">
+              <img 
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80" 
+                alt="Developers and founders networking at ecosystem meetup"
+                onerror="this.src='https://placehold.co/900x450/176B68/F7F7F2?text=Global+Founder+Community'"
+              />
+            </div>
+          </div>
+
+          <!-- Subheadline, CTAs & Rotating Circular Badge -->
+          <div class="editorial-grid" style="margin-top: 2.5rem; align-items: end;">
+            <div class="col-7">
+              <p class="body-lg" style="max-width: 58ch; color: var(--navy); margin-bottom: 2rem;">
+                Ecosystem partnerships, communities, builder programmes, events and data-driven consultation for organizations scaling in India and across the globe.
+              </p>
+              <div style="display:flex; flex-wrap:wrap; align-items:center; gap: 1.25rem;">
+                <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>Book an Intro Call</span>
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                </a>
+                <a href="#/work" class="btn-outline">
+                  <span>See the work</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-5" style="display:flex; justify-content:flex-end; align-items:center;">
+              <div class="rotating-badge-wrap" aria-label="Dissolvers Helping Founders Go Global Badge">
+                <svg class="rotating-badge-svg" viewBox="0 0 120 120">
+                  <defs>
+                    <path id="badgeCirclePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+                  </defs>
+                  <circle cx="60" cy="60" r="56" fill="none" stroke="#142B3B" stroke-width="1" opacity="0.25" />
+                  <circle cx="60" cy="60" r="36" fill="none" stroke="#142B3B" stroke-width="1" opacity="0.25" />
+                  <text font-family="Inter, sans-serif" font-size="7.6" font-weight="600" letter-spacing="1.9" fill="#142B3B">
+                    <textPath href="#badgeCirclePath" textLength="285" lengthAdjust="spacing">DISSOLVERS • HELPING FOUNDERS • GO GLOBAL •&#160;</textPath>
+                  </text>
+                </svg>
+                <div class="rotating-badge-center" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MARQUEE OF ECOSYSTEMS -->
+      <div style="background-color: var(--off-white); padding-top: 1.25rem;">
+        <div class="container" style="margin-bottom: 0.65rem;">
+          <span class="label-mono">Founder has worked with</span>
+        </div>
+        <div class="marquee-strip" aria-label="Ecosystems the founder has worked with">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <span class="marquee-item">Arbitrum</span>
+              <span class="marquee-item">Nillion</span>
+              <span class="marquee-item">Aptos</span>
+              <span class="marquee-item">Base</span>
+              <span class="marquee-item">Avalanche</span>
+              <span class="marquee-item">CoinEx</span>
+              <span class="marquee-item">ETHGlobal</span>
+              <span class="marquee-item">Vara/Gear Foundation</span>
+              <span class="marquee-item">Superteam</span>
+              <span class="marquee-item">Core DAO</span>
+              <span class="marquee-item">Bitget Wallet</span>
+              <span class="marquee-item">OrbitX</span>
+              <span class="marquee-item">Cluster Protocol</span>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+              <span class="marquee-item">Arbitrum</span>
+              <span class="marquee-item">Nillion</span>
+              <span class="marquee-item">Aptos</span>
+              <span class="marquee-item">Base</span>
+              <span class="marquee-item">Avalanche</span>
+              <span class="marquee-item">CoinEx</span>
+              <span class="marquee-item">ETHGlobal</span>
+              <span class="marquee-item">Vara/Gear Foundation</span>
+              <span class="marquee-item">Superteam</span>
+              <span class="marquee-item">Core DAO</span>
+              <span class="marquee-item">Bitget Wallet</span>
+              <span class="marquee-item">OrbitX</span>
+              <span class="marquee-item">Cluster Protocol</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. SERVICES: NUMBERED ROWS 01–07 -->
+      <div class="section-pad">
+        <div class="container">
+          <div class="editorial-grid" style="margin-bottom: 3rem; align-items: end;">
+            <div class="col-7">
+              <span class="label-mono" style="margin-bottom: 0.75rem;"><span class="sec-num">01</span> CAPABILITIES</span>
+              <h2 class="display-xl">Seven ways we build <span class="marker-highlight">ground</span> game.</h2>
+            </div>
+            <div class="col-5">
+              <p class="body-md" style="color: var(--slate);">
+                Practical execution across research, partner qualification, community operations, university pipelines, on-ground events, technical narrative and data-driven consultation.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-list" role="list">
+            <a href="#/services/market-entry" class="service-row" role="listitem">
+              <span class="service-row-num">01</span>
+              <h3 class="service-row-title">India Market Entry <em>Sprint</em></h3>
+              <div class="service-row-desc">
+                Market and competitor research, segment mapping, partner landscape review, and a practical next-step roadmap.
+                <span class="service-row-slide">Explore 4-week research &amp; GTM scoping sprint →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/partnerships" class="service-row" role="listitem">
+              <span class="service-row-num">02</span>
+              <h3 class="service-row-title">Partnerships &amp; <em>Channel Development</em></h3>
+              <div class="service-row-desc">
+                Identify, qualify and engage ecosystem, technology, referral, reseller and strategic partners across India.
+                <span class="service-row-slide">Explore partner qualification, outreach &amp; pipeline setup →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/ecosystem-community" class="service-row" role="listitem">
+              <span class="service-row-num">03</span>
+              <h3 class="service-row-title">Ecosystem &amp; <em>Community Growth</em></h3>
+              <div class="service-row-desc">
+                Build and run India communities, townhalls, X Spaces, ambassador programmes and regional social presence.
+                <span class="service-row-slide">Explore community architecture &amp; cadence →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/builder-programmes" class="service-row" role="listitem">
+              <span class="service-row-num">04</span>
+              <h3 class="service-row-title">Builder Programmes &amp; <em>Hackathons</em></h3>
+              <div class="service-row-desc">
+                University partnerships, tech clubs, workshops, buildstations, hackathon design and developer onboarding.
+                <span class="service-row-slide">Explore developer education &amp; campus pipelines →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/events-activations" class="service-row" role="listitem">
+              <span class="service-row-num">05</span>
+              <h3 class="service-row-title">Events &amp; <em>Launch Activations</em></h3>
+              <div class="service-row-desc">
+                Meetups, launch parties, hands-on workshops, conferences, hacker houses and curated builder residencies.
+                <span class="service-row-slide">Explore pan-India IRL production &amp; residencies →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/content-narrative" class="service-row" role="listitem">
+              <span class="service-row-num">06</span>
+              <h3 class="service-row-title">Content &amp; <em>Narrative</em></h3>
+              <div class="service-row-desc">
+                Technical articles, deep-dive threads, explainers, video scripts, case studies and launch narratives.
+                <span class="service-row-slide">Explore developer-grade writing &amp; storytelling →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/consultation" class="service-row" role="listitem">
+              <span class="service-row-num">07</span>
+              <h3 class="service-row-title"><em>Consultation</em></h3>
+              <div class="service-row-desc">
+                Data-driven strategies to scale your numbers across user acquisition, developer funnels, community retention and partner pipelines.
+                <span class="service-row-slide">Explore data-driven growth &amp; scaling roadmaps →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. STARTING-WITH-INDIA STRIP -->
+      <div class="section-navy section-pad-sm">
+        <div class="container">
+          <div class="editorial-grid" style="align-items: center;">
+            <div class="col-5">
+              <span class="sticker-pill" style="margin-bottom: 1rem;">Helping Founders</span>
+              <h2 class="display-lg">Starting with India, <em>scaling globally.</em></h2>
+            </div>
+            <div class="col-7">
+              <p class="body-lg" style="color: rgba(247, 247, 242, 0.9); margin-bottom: 1.25rem;">
+                We work with organizations from North America, Europe, Asia-Pacific, the Middle East &amp; Africa and Latin America who want to build distribution in India and across the globe. Planning to expand into new markets? <a href="#/contact" style="color: var(--yellow); border-bottom: 1px solid var(--yellow);">Let's talk.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. FOUNDER EXPERIENCE HIGHLIGHTS (BENTO GRID) -->
+      <div class="section-pad">
+        <div class="container">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:1rem; margin-bottom: 2.5rem;">
+            <div>
+              <span class="label-mono" style="margin-bottom: 0.75rem;"><span class="sec-num">02</span> TRACK RECORD</span>
+              <h2 class="display-xl">Proof on the <span class="marker-highlight">ground</span>.</h2>
+            </div>
+            <span class="sticker-pill offwhite-pill">Founder experience, not agency client results</span>
+          </div>
+
+          <div class="bento-grid">
+            <div class="bento-cell bento-span-7">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="label-mono">ARBITRUM LAUNCHPAD INDIA</span>
+                <span class="sec-num">BUILDER PIPELINE</span>
+              </div>
+              <div>
+                <div class="bento-stat-number"><span data-count="2000">0</span>+</div>
+                <p class="body-lg" style="margin-top: 0.75rem;">
+                  Builders reached end-to-end across 9 technical workshops, 2 buildstations, and 10+ universities onboarded.
+                </p>
+              </div>
+            </div>
+
+            <div class="bento-cell bento-dark bento-span-5">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="label-mono">ON-GROUND OPERATIONS</span>
+                <span class="sec-num">GO GLOBAL</span>
+              </div>
+              <div>
+                <div class="bento-stat-number"><span data-count="10">0</span>+</div>
+                <p class="body-lg" style="margin-top: 0.75rem; color: rgba(247, 247, 242, 0.85);">
+                  Events hosted across ecosystem meetups, hacker houses, ecosystem calls and regional conferences.
+                </p>
+              </div>
+            </div>
+
+            <div class="bento-cell bento-span-5">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="label-mono">ODISHA DAO (FOUNDED DEC 2024)</span>
+                <span class="sec-num">ORGANIC COMMUNITY</span>
+              </div>
+              <div>
+                <div class="bento-stat-number"><span data-count="1000">0</span>+</div>
+                <p class="body-md" style="margin-top: 0.75rem; color: var(--slate);">
+                  Community members built from 0 in 10 months, alongside 450K+ organic X impressions and 10,000+ members onboarded on-chain.
+                </p>
+              </div>
+            </div>
+
+            <div class="bento-cell bento-span-7">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="label-mono">ONCHAIN ISLAND (ANDAMAN &amp; NICOBAR)</span>
+                <span class="sec-num">RESIDENCY</span>
+              </div>
+              <div>
+                <div class="bento-stat-number"><span data-count="50">0</span>+</div>
+                <p class="body-md" style="margin-top: 0.75rem; color: var(--slate);">
+                  Curated builders hosted in India's first 4-day island builder residency, resulting in mainnet launches and $100K in ecosystem grants.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <p style="font-size: 0.85rem; color: var(--slate);">
+              Transparent attribution: All metrics above reflect Soumya Ranjan Behera's direct operator work prior to launching Dissolvers.
+            </p>
+            <a href="#/work" class="text-link-arrow">
+              <span>Inspect full programme breakdowns &amp; verification links</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slice-divider"></div>
+
+      <!-- 6. HOW WE WORK: HORIZONTAL LINE DIAGRAM -->
+      <div class="section-pad">
+        <div class="container">
+          <div style="margin-bottom: 4.5rem;">
+            <span class="label-mono" style="margin-bottom: 0.75rem;"><span class="sec-num">03</span> OPERATING CADENCE</span>
+            <h2 class="display-xl">How we <span class="marker-highlight">work</span>.</h2>
+          </div>
+
+          <div class="process-line-grid">
+            <div class="process-node">
+              <div class="process-node-dot">01</div>
+              <h3 class="display-md" style="margin-bottom: 0.75rem;">Understand</h3>
+              <p class="body-md" style="color: var(--slate);">
+                We audit your product, ideal customer or developer profile, existing documentation, and realistic objectives for entering India.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">02</div>
+              <h3 class="display-md" style="margin-bottom: 0.75rem;"><em>Map</em></h3>
+              <p class="body-md" style="color: var(--slate);">
+                We map the high-leverage regional ecosystems, channel partners, developer clubs, and decision-makers that fit your category.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">03</div>
+              <h3 class="display-md" style="margin-bottom: 0.75rem;">Engage</h3>
+              <p class="body-md" style="color: var(--slate);">
+                We run warm introductions, tailored partner outreach, community townhalls, and narrative localization with direct founder oversight.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">04</div>
+              <h3 class="display-md" style="margin-bottom: 0.75rem;"><em>Activate</em></h3>
+              <p class="body-md" style="color: var(--slate);">
+                We operationalize joint programmes, workshops, residencies, or co-marketing pipelines and track every milestone transparently.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 3rem;">
+            <a href="#/how-we-work" class="text-link-arrow">
+              <span>Read our full operating principles</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slice-divider"></div>
+
+      <!-- 7. WHY INDIA, WHY PARTNERSHIPS (EDITORIAL PARAGRAPH) -->
+      <div class="section-pad">
+        <div class="container">
+          <div class="editorial-grid">
+            <div class="col-4">
+              <span class="label-mono"><span class="sec-num">04</span> THESIS</span>
+              <h2 class="display-lg" style="margin-top: 0.75rem;">Why India &amp; global hubs, <em>why partnerships.</em></h2>
+            </div>
+            <div class="col-8">
+              <p class="display-md" style="line-height: 1.28; color: var(--navy);">
+                High-growth markets are not single monoliths—they are dense networks of regional developer hubs, high-trust founder circles, university ecosystems and enterprise channel operators. Cold ads and generic playbooks rarely convert here. Relevant local relationships cut through the noise, giving organizations immediate credibility, warmer partner introductions, and grounded feedback from real builders and buyers in India and across the globe.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. NAVY BAND MARQUEE & FINAL CTA ON NAVY -->
+      <div class="marquee-strip navy-marquee" aria-label="Core capabilities marquee">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span class="marquee-item">Partnerships</span>
+            <span class="marquee-item">Communities</span>
+            <span class="marquee-item">Builders</span>
+            <span class="marquee-item">Events</span>
+            <span class="marquee-item">Content</span>
+            <span class="marquee-item">Consultation</span>
+            <span class="marquee-item">Partnerships</span>
+            <span class="marquee-item">Communities</span>
+            <span class="marquee-item">Builders</span>
+            <span class="marquee-item">Events</span>
+            <span class="marquee-item">Content</span>
+            <span class="marquee-item">Consultation</span>
+          </div>
+          <div class="marquee-group" aria-hidden="true">
+            <span class="marquee-item">Partnerships</span>
+            <span class="marquee-item">Communities</span>
+            <span class="marquee-item">Builders</span>
+            <span class="marquee-item">Events</span>
+            <span class="marquee-item">Content</span>
+            <span class="marquee-item">Consultation</span>
+            <span class="marquee-item">Partnerships</span>
+            <span class="marquee-item">Communities</span>
+            <span class="marquee-item">Builders</span>
+            <span class="marquee-item">Events</span>
+            <span class="marquee-item">Content</span>
+            <span class="marquee-item">Consultation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-navy section-pad">
+        <div class="container" style="text-align: center;">
+          <span class="sticker-pill" style="margin-bottom: 1.5rem;">Helping Founders</span>
+          <h2 class="display-hero" style="max-width: 14ch; margin: 0 auto 2rem;">
+            Let's discuss your <span class="marker-highlight">growth</span> <em>goals.</em>
+          </h2>
+          <p class="body-lg" style="max-width: 48ch; margin: 0 auto 2.5rem; color: rgba(247, 247, 242, 0.82);">
+            No pitch decks full of fabricated logos. Just a practical 30-minute conversation about your organization and how to build distribution in India and across the globe.
+          </p>
+          <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <span>Book an Intro Call</span>
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 2: SERVICES OVERVIEW (#/services)
+         ======================================================================== -->
+    <section id="view-services" class="page-view" data-route="/services">
+      <div class="section-pad">
+        <div class="container">
+          <span class="label-mono" style="margin-bottom: 1rem;"><span class="sec-num">SERVICES</span> OVERVIEW</span>
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 1.5rem;">
+            Practical <span class="marker-highlight">execution</span> across seven pillars.
+          </h1>
+          <p class="body-lg" style="max-width: 60ch; color: var(--slate); margin-bottom: 4rem;">
+            We help organizations enter and scale in India and across the globe. Every engagement is structured around data-driven strategy, research, partner qualification, relationship development, community coordination, activation planning and transparent pipeline tracking.
+          </p>
+
+          <div class="service-list" role="list">
+            <a href="#/services/market-entry" class="service-row" role="listitem">
+              <span class="service-row-num">01</span>
+              <h2 class="service-row-title">India Market Entry <em>Sprint</em></h2>
+              <div class="service-row-desc">
+                Market and competitor research, segment mapping, partner landscape review, opportunity assessment, and a practical next-step roadmap.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/partnerships" class="service-row" role="listitem">
+              <span class="service-row-num">02</span>
+              <h2 class="service-row-title">Partnerships &amp; <em>Channel Development</em></h2>
+              <div class="service-row-desc">
+                Identify and qualify ecosystem, technology, channel and strategic partners; tailored outreach; referral, reseller, integration and affiliate setup.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/ecosystem-community" class="service-row" role="listitem">
+              <span class="service-row-num">03</span>
+              <h2 class="service-row-title">Ecosystem &amp; <em>Community Growth</em></h2>
+              <div class="service-row-desc">
+                Build and run India communities, townhalls, X Spaces, ambassador programmes and regional social presence.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/builder-programmes" class="service-row" role="listitem">
+              <span class="service-row-num">04</span>
+              <h2 class="service-row-title">Builder Programmes &amp; <em>Hackathons</em></h2>
+              <div class="service-row-desc">
+                University partnerships, blockchain/tech clubs, workshops, buildstations, hackathon design, developer onboarding and incubation pathways.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/events-activations" class="service-row" role="listitem">
+              <span class="service-row-num">05</span>
+              <h2 class="service-row-title">Events &amp; <em>Launch Activations</em></h2>
+              <div class="service-row-desc">
+                Meetups, launch parties, workshops, conferences, hacker houses and curated builder residencies across India.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/content-narrative" class="service-row" role="listitem">
+              <span class="service-row-num">06</span>
+              <h2 class="service-row-title">Content &amp; <em>Narrative</em></h2>
+              <div class="service-row-desc">
+                Technical articles, threads, explainers, video scripts, case studies and launch narratives tailored for builders and operators.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="#/services/consultation" class="service-row" role="listitem">
+              <span class="service-row-num">07</span>
+              <h2 class="service-row-title"><em>Consultation</em></h2>
+              <div class="service-row-desc">
+                Data-driven strategies to scale your numbers across user acquisition, developer funnels, community retention and partner pipelines.
+                <span class="service-row-slide">View full service breakdown →</span>
+              </div>
+              <span class="service-row-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE 06: CONTENT & NARRATIVE -->
+    <section id="view-service-content-narrative" class="page-view" data-route="/services/content-narrative">
+      <div class="section-pad">
+        <div class="container">
+          <a href="#/services" class="text-link-arrow" style="margin-bottom: 2rem;">← Back to all services</a>
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+            <span class="sec-num">SERVICE 06</span>
+            <span class="sticker-pill">Technical Storytelling</span>
+          </div>
+          <h1 class="display-hero" style="max-width: 15ch; margin-bottom: 1.5rem;">
+            Content &amp; <span class="marker-highlight">Narrative</span>.
+          </h1>
+          <p class="body-lg" style="max-width: 62ch; color: var(--slate); margin-bottom: 4rem;">
+            Technical articles, deep-dive X threads, architecture explainers, video scripts, case studies and launch narratives that make complex products clear to builders and buyers.
+          </p>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3rem; margin-bottom: 4rem;">
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">OVERVIEW</span>
+              <h2 class="display-md" style="margin-bottom: 1rem;">Writing that respects <em>the reader.</em></h2>
+              <p class="body-md" style="color: var(--slate);">
+                Developers and technical decision-makers immediately tune out generic marketing copy. Our founder's writing has won highly competitive ecosystem research bounties for Celestia (250+ submissions) and Push Chain (200+ submissions), been reshared directly by Okto's official account, and anchored developer education for Vara Network (Gear Foundation). We translate dense technical architecture into crisp, compelling narratives.
+              </p>
+            </div>
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">WHO IT'S FOR</span>
+              <ul class="fact-list">
+                <li><span>Infrastructure, AI, and protocol teams launching new architectures, SDKs, or mainnet upgrades.</span></li>
+                <li><span>B2B SaaS and developer-tool startups needing grounded case studies, deep-dive threads and technical blog posts.</span></li>
+                <li><span>Founders who want sharp, research-backed narrative assets to support their India and global GTM.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3rem; margin-bottom: 4rem;">
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">WHAT'S INCLUDED</span>
+              <ul class="fact-list">
+                <li><span>Long-form technical articles and architecture deep dives (Dev.to, Mirror, Substack, company blog).</span></li>
+                <li><span>Research-grade X threads and visual diagrams for feature launches and ecosystem updates.</span></li>
+                <li><span>Explainer videos and product walkthrough production.</span></li>
+                <li><span>Ecosystem case studies and builder spotlight stories.</span></li>
+                <li><span>Core launch narrative positioning and messaging frameworks.</span></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">EXAMPLE DELIVERABLES</span>
+              <ul class="fact-list">
+                <li><span>2,000-word Technical Deep-Dive Articles with custom architecture diagrams.</span></li>
+                <li><span>Launch Thread Sequences &amp; Key Messaging Briefs.</span></li>
+                <li><span>Narrated Product Explainer Videos (similar to our ElevenLabs sample).</span></li>
+                <li><span>Customer / Ecosystem Builder Case Study Documents.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-hairline); padding-top: 3rem;">
+            <span class="label-mono" style="margin-bottom: 2.5rem;"><span class="sec-num">4 STEPS</span> HOW WE PRODUCE CONTENT</span>
+            <div class="process-line-grid">
+              <div class="process-node">
+                <div class="process-node-dot">01</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;">Technical Intake</h3>
+                <p class="body-md" style="color: var(--slate);">We read your whitepapers, docs, and GitHub repos and interview your engineers or founder.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">02</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;"><em>Angle &amp; Outline</em></h3>
+                <p class="body-md" style="color: var(--slate);">We structure a clear narrative hook that highlights *why* your architecture matters to builders or buyers.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">03</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;">Draft &amp; Visuals</h3>
+                <p class="body-md" style="color: var(--slate);">We write the piece in plain, authoritative prose alongside supporting diagrams or video assets.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">04</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;"><em>Distribution</em></h3>
+                <p class="body-md" style="color: var(--slate);">We coordinate publishing across your channels and amplify across relevant Indian builder communities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-navy section-pad-sm">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <div>
+            <h2 class="display-lg">Need technical content <em>that actually lands?</em></h2>
+            <p class="body-md" style="color: rgba(247,247,242,0.8); margin-top: 0.4rem;">Check out our published work samples or book an intro call.</p>
+          </div>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="#/work" class="btn-outline"><span>See Content Samples</span></a>
+            <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <span>Book an Intro Call</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE 07: CONSULTATION -->
+    <section id="view-service-consultation" class="page-view" data-route="/services/consultation">
+      <div class="section-pad">
+        <div class="container">
+          <a href="#/services" class="text-link-arrow" style="margin-bottom: 2rem;">← Back to all services</a>
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+            <span class="sec-num">SERVICE 07</span>
+            <span class="sticker-pill">Data-Driven Scaling</span>
+          </div>
+          <h1 class="display-hero" style="max-width: 15ch; margin-bottom: 1.5rem;">
+            Strategic <span class="marker-highlight">Consultation</span>.
+          </h1>
+          <p class="body-lg" style="max-width: 62ch; color: var(--slate); margin-bottom: 4rem;">
+            Data-driven strategies to scale your numbers—auditing your current funnels, community retention, developer activation and partner conversion to unlock measurable global growth.
+          </p>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3rem; margin-bottom: 4rem;">
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">OVERVIEW</span>
+              <h2 class="display-md" style="margin-bottom: 1rem;">Data-driven strategies to <em>scale your numbers.</em></h2>
+              <p class="body-md" style="color: var(--slate);">
+                Many organizations invest heavily in events, content, or community without clear telemetry on what actually drives active users, developers, or qualified pipeline. Our Consultation pillar provides direct, analytical advisory where we dissect your current metrics, benchmark against real operator data, eliminate low-converting activities, and engineer a repeatable system to scale your numbers.
+              </p>
+            </div>
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">WHO IT'S FOR</span>
+              <ul class="fact-list">
+                <li><span>Organizations that want a data-backed growth and distribution strategy before scaling spend.</span></li>
+                <li><span>Founders and GTM leads looking to improve conversion from community/events into active product usage.</span></li>
+                <li><span>Ecosystem teams needing structured KPI frameworks, funnel diagnostics, and weekly operator advisory.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3rem; margin-bottom: 4rem;">
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">WHAT'S INCLUDED</span>
+              <ul class="fact-list">
+                <li><span>Full-funnel growth &amp; distribution audit (acquisition, onboarding, activation, retention).</span></li>
+                <li><span>Data-driven KPI modelling and cohort tracking setup across community, devrel and partner channels.</span></li>
+                <li><span>Channel efficiency review to double down on high-ROI initiatives and cut vanity spend.</span></li>
+                <li><span>1-on-1 weekly strategic advisory sessions with founders and internal growth teams.</span></li>
+                <li><span>Custom scaling playbooks for India and global expansion.</span></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">EXAMPLE DELIVERABLES</span>
+              <ul class="fact-list">
+                <li><span>Data-Driven Growth &amp; Funnel Diagnostic Report.</span></li>
+                <li><span>North-Star KPI Dashboard &amp; Attribution Framework.</span></li>
+                <li><span>Quarter-by-Quarter Scaling Playbook with Experiment Backlog.</span></li>
+                <li><span>Bi-weekly Executive Strategy &amp; Metric Review Sessions.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-hairline); padding-top: 3rem;">
+            <span class="label-mono" style="margin-bottom: 2.5rem;"><span class="sec-num">4 STEPS</span> HOW CONSULTATION WORKS</span>
+            <div class="process-line-grid">
+              <div class="process-node">
+                <div class="process-node-dot">01</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;">Metric Audit</h3>
+                <p class="body-md" style="color: var(--slate);">We review your existing numbers, attribution gaps, and conversion bottlenecks across channels.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">02</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;"><em>Strategy Design</em></h3>
+                <p class="body-md" style="color: var(--slate);">We build a data-driven growth model prioritizing the highest-leverage levers to scale your numbers.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">03</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;">Experimentation</h3>
+                <p class="body-md" style="color: var(--slate);">We guide your team through rapid, measurable GTM sprints with clear weekly scorecards.</p>
+              </div>
+              <div class="process-node">
+                <div class="process-node-dot">04</div>
+                <h3 class="display-md" style="margin-bottom: 0.5rem;"><em>Scale &amp; Optimize</em></h3>
+                <p class="body-md" style="color: var(--slate);">We refine the playbook based on live performance data so your growth compounds predictably.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-navy section-pad-sm">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <div>
+            <h2 class="display-lg">Ready for a data-driven strategy <em>to scale your numbers?</em></h2>
+            <p class="body-md" style="color: rgba(247,247,242,0.8); margin-top: 0.4rem;">Book a 30-minute consultation call to review your current metrics and growth goals.</p>
+          </div>
+          <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <span>Book an Intro Call</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 9: WORK PAGE (#/work) - FOUNDER EXPERIENCE
+         ======================================================================== -->
+    <section id="view-work" class="page-view" data-route="/work">
+      <div class="section-pad">
+        <div class="container">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem;">
+            <span class="label-mono"><span class="sec-num">PORTFOLIO</span> FOUNDER EXPERIENCE</span>
+            <span class="sticker-pill">Transparent Attribution</span>
+          </div>
+
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 1.5rem;">
+            Founder <span class="marker-highlight">experience</span>.
+          </h1>
+          <p class="body-lg" style="max-width: 60ch; color: var(--navy); margin-bottom: 3.5rem; padding: 1.25rem; border: 1px solid var(--navy); background: rgba(255,230,0,0.12);">
+            <strong>Experience from the founder's work before Dissolvers. Not agency client engagements.</strong> Every programme below includes public proof links so you can verify the work directly.
+          </p>
+
+          <!-- 01 Arbitrum Launchpad India -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">01</span> BUILDER PROGRAMME</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Arbitrum Launchpad <em>India</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Led end-to-end as programme operator—connecting university developer ecosystems, running hands-on technical workshops and buildstations, and guiding builders from registration to ecosystem incubation.
+                </p>
+                <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+                  <a href="https://x.com/OdishaDao/status/1964659113927020925" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Source Link 1 (X) ↗</a>
+                  <a href="https://x.com/OdishaDao/status/2006472652043747525" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Source Link 2 (X) ↗</a>
+                  <a href="https://www.instagram.com/reel/DS8Ylymkxz6/" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Instagram Reel ↗</a>
+                </div>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>9 technical workshops &amp; 2 buildstations executed</span></li>
+                  <li><span>10+ universities onboarded across the programme</span></li>
+                  <li><span>2 dedicated university blockchain clubs created</span></li>
+                  <li><span>2,000+ builders reached</span></li>
+                  <li><span>800+ hackathon registrations generated</span></li>
+                  <li><span>Top 100 hackers shortlisted</span></li>
+                  <li><span>3 projects incubated into the Arbitrum ecosystem</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 Odisha DAO -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">02</span> REGIONAL COMMUNITY</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Odisha DAO <em>(Founded Dec 2024)</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Founded and scaled a grassroots regional Web3 &amp; tech builder community from scratch, turning an underserved state into an active hub for global protocols.
+                </p>
+                <a href="https://x.com/OdishaDao" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Odisha DAO on X ↗</a>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>Grew from 0 to 1,000+ community members in 10 months</span></li>
+                  <li><span>700+ organic X followers</span></li>
+                  <li><span>450K+ organic impressions across campaigns and events</span></li>
+                  <li><span>10,000+ members onboarded on-chain</span></li>
+                  <li><span>Hosted ecosystem X Spaces with Aleph Zero and Koboto AI</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 OnchAIn Island -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">03</span> BUILDER RESIDENCY</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">OnchAIn Island <em>(Andaman &amp; Nicobar)</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  India's first island builder residency in Andaman &amp; Nicobar—bringing together curated AI and Web3 builders for focused shipping.
+                </p>
+                <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+                  <a href="https://x.com/247pmstudio/status/1908789851790385217" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Residency Highlight 1 (X) ↗</a>
+                  <a href="https://x.com/247pmstudio/status/1966453516173496596" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Residency Highlight 2 (X) ↗</a>
+                </div>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>50+ curated builders hosted on-site</span></li>
+                  <li><span>4-day intensive residency format</span></li>
+                  <li><span>Multiple mainnet product launches shipped during residency</span></li>
+                  <li><span>Top products received ecosystem grants worth $100K</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 Core DAO Hacker House, Bangalore -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">04</span> HACKER HOUSE</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Core DAO Hacker House, <em>Bangalore</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Core organising team member handling end-to-end developer marketing, community partnerships and on-ground execution in Bengaluru.
+                </p>
+                <a href="https://x.com/corechain_devs/status/1903349713908232209" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Core DAO Devs Recap (X) ↗</a>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>Led registration marketing and community partnerships</span></li>
+                  <li><span>Managed on-site operations, speaker and judge coordination</span></li>
+                  <li><span>Generated 400K+ impressions and 1,000+ new followers</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05 Vara Network (Gear Foundation) India -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">05</span> DEVREL &amp; ECOSYSTEM</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Vara Network <em>(Gear Foundation) India</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Combined technical developer education, architectural deep-dives, X Spaces and IRL workshops to grow Vara's Indian builder base.
+                </p>
+                <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                  <a href="https://dev.to/srobver/unleashing-the-power-of-gearexe-a-new-era-of-computation-for-ethereum-dapps-5g79" target="_blank" rel="noopener noreferrer" class="text-link-arrow" style="width:fit-content;">Dev.to: Unleashing the Power of Gear.exe ↗</a>
+                  <a href="https://dev.to/srobver/exploring-the-advantages-of-gears-actor-model-in-vara-network-444f" target="_blank" rel="noopener noreferrer" class="text-link-arrow" style="width:fit-content;">Dev.to: Gear's Actor Model in Vara Network ↗</a>
+                </div>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>Authored technical articles &amp; architectural explainers on Gear.exe and the Actor Model</span></li>
+                  <li><span>Produced educational X threads and hosted ecosystem X Spaces</span></li>
+                  <li><span>Organised hands-on IRL builder workshop</span></li>
+                  <li><span>Contributed to growing a 1,000+ member community</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 06 OnchAIn Asia Hub -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">06</span> ECOSYSTEM HUB</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">OnchAIn Asia Hub <em>(powered by deepfunding)</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Regional community growth and partner collaboration across Asia for decentralized AI initiatives.
+                </p>
+                <a href="https://x.com/onchain_asia" target="_blank" rel="noopener noreferrer" class="text-link-arrow">OnchAIn Asia on X ↗</a>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li><span>Scaled from 0 to 500+ members in 4 months</span></li>
+                  <li><span>Executed regional partner collaborations and community activations</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- 07 Content Wins & Case Study Assets -->
+          <article class="work-entry" style="border-bottom: 1px solid var(--border-hairline);">
+            <div class="editorial-grid">
+              <div class="col-5">
+                <span class="label-mono" style="margin-bottom: 0.5rem;"><span class="sec-num">07</span> CONTENT &amp; NARRATIVE WINS</span>
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Technical Writing &amp; <em>Media Samples</em></h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                  Recognized across competitive ecosystem research bounties and official protocol channels.
+                </p>
+              </div>
+              <div class="col-7">
+                <ul class="fact-list">
+                  <li>
+                    <span><strong>Celestia</strong> — Bounty winner out of 250+ submissions</span>
+                    <a href="https://x.com/SRobver/status/1907108284009496747" target="_blank" rel="noopener noreferrer" class="text-link-arrow">View Thread ↗</a>
+                  </li>
+                  <li>
+                    <span><strong>Push Chain</strong> — Bounty winner out of 200+ submissions</span>
+                    <a href="https://x.com/SRobver/status/1897552128975233339" target="_blank" rel="noopener noreferrer" class="text-link-arrow">View Thread ↗</a>
+                  </li>
+                  <li>
+                    <span><strong>Okto</strong> — Only thread reshared by the official account (180+ submissions)</span>
+                    <a href="https://x.com/SRobver/status/1866597351827312949" target="_blank" rel="noopener noreferrer" class="text-link-arrow">View Thread ↗</a>
+                  </li>
+                  <li>
+                    <span><strong>Detailed Founder Case Study Doc</strong> — Full visual &amp; metric documentation</span>
+                    <a href="https://docs.google.com/document/d/1I5wJ9cTlBUEIZGnHxzQiDaBl-Mf_eF_RXEr46xWk6G4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Open Google Doc ↗</a>
+                  </li>
+                  <li>
+                    <span><strong>ElevenLabs Video Sample</strong> — Narrated technical explainer sample</span>
+                    <a href="https://drive.google.com/file/d/1A4uWusDoVnLpHyUppb_Uwib9fcfLta0U/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Watch Video Sample ↗</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--slate); font-style: italic;">
+            Footnote: Figures are provided by the founder and based on programme records.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 10: EVENTS PAGE (#/events)
+         ======================================================================== -->
+    <section id="view-events" class="page-view" data-route="/events">
+      <div class="section-pad">
+        <div class="container">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem;">
+            <span class="label-mono"><span class="sec-num">IRL &amp; ECOSYSTEM CALLS</span> TRACK RECORD</span>
+            <span class="sticker-pill">Go Global</span>
+          </div>
+
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 1.5rem;">
+            Events &amp; <span class="marker-highlight">community</span> <em>gatherings.</em>
+          </h1>
+          <p class="body-lg" style="max-width: 60ch; color: var(--slate); margin-bottom: 2.5rem;">
+            Photos, highlight reels and attendee numbers from meetups, conferences, builder hangouts, gaming nights and ecosystem activations organised, hosted or spoken at by the founder.
+          </p>
+
+          <!-- Events Hero Photo & Video Showcase -->
+          <div class="events-media-hero" aria-label="Events Photos and Video Highlights">
+            <!-- Featured Event Video Highlight -->
+            <div class="events-media-card col-7" style="min-height: 360px;">
+              <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"
+              >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-people-at-a-conference-listening-to-a-speaker-41645-large.mp4" type="video/mp4" />
+              </video>
+              <div class="events-media-caption">
+                <span class="sticker-pill" style="margin-bottom: 0.4rem; font-size: 0.62rem;">LIVE HIGHLIGHT REEL</span>
+                <div>On-Ground Builder Residencies, Conferences &amp; Hacker Houses</div>
+              </div>
+            </div>
+
+            <!-- Featured Crowd Photos Stack -->
+            <div class="col-5" style="display: grid; gap: 1.25rem;">
+              <div class="events-media-card" style="min-height: 170px;">
+                <img 
+                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80" 
+                  alt="Odisha's First Web3 Conference stage and 200+ crowd"
+                  onerror="this.src='https://placehold.co/600x340/142B3B/FFE600?text=200%2B+Conference+Crowd'"
+                />
+                <div class="events-media-caption">Web3 Conference • 200+ Attendees</div>
+              </div>
+              <div class="events-media-card" style="min-height: 170px;">
+                <img 
+                  src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" 
+                  alt="Hands-on developer workshop and buildstation"
+                  onerror="this.src='https://placehold.co/600x340/176B68/F7F7F2?text=Builder+Hangout'"
+                />
+                <div class="events-media-caption">Hands-On Builder Meetups &amp; Ecosystem Hangouts</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="hairline-table" aria-label="Founder Events Track Record">
+              <thead>
+                <tr>
+                  <th style="width: 10%;">#</th>
+                  <th style="width: 45%;">Event</th>
+                  <th style="width: 25%;">Attendees</th>
+                  <th style="width: 20%;">Event Photo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="label-mono">01</td>
+                  <td><strong>DePIN Cash Landing (Superteam)</strong></td>
+                  <td>25+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=300&q=80" alt="DePIN Cash Landing meetup photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">02</td>
+                  <td><strong>CoinEx Meetup</strong></td>
+                  <td>40+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="CoinEx Meetup crowd photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">03</td>
+                  <td><strong>Avalanche Meetup</strong></td>
+                  <td>45+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=300&q=80" alt="Avalanche Meetup photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">04</td>
+                  <td><strong>Odisha's First Web3 Conference</strong> <span style="color:var(--slate); font-size:0.85rem;">(Founder spoke)</span></td>
+                  <td>200+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=300&q=80" alt="Odisha First Web3 Conference photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">05</td>
+                  <td><strong>Solana Ecosystem Call</strong></td>
+                  <td>50+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=300&q=80" alt="Solana Ecosystem Call photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">06</td>
+                  <td><strong>Vara Network Builder's Hangout</strong></td>
+                  <td>25+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" alt="Vara Network Builders Hangout photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">07</td>
+                  <td><strong>Avalanche Gaming Night</strong></td>
+                  <td>25+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=300&q=80" alt="Avalanche Gaming Night photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">08</td>
+                  <td><strong>Solana Ecosystem Call</strong></td>
+                  <td>40+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=300&q=80" alt="Solana Ecosystem Call crowd photo" class="event-table-photo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-mono">09</td>
+                  <td><strong>Bitget Wallet Crypto for India</strong></td>
+                  <td>50+ Attendees</td>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&w=300&q=80" alt="Bitget Wallet Crypto for India photo" class="event-table-photo" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 3rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1.5rem; padding: 2rem; border: 1px solid var(--border-hairline);">
+            <div>
+              <h2 class="display-md">Full Luma Event Calendar &amp; Host History</h2>
+              <p class="body-md" style="color: var(--slate);">Browse upcoming and past events hosted by Soumya Ranjan Behera on Luma.</p>
+            </div>
+            <a href="https://luma.com/user/SRobver" target="_blank" rel="noopener noreferrer" class="btn-outline">
+              <span>Visit luma.com/user/SRobver ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 11: HOW WE WORK (#/how-we-work)
+         ======================================================================== -->
+    <section id="view-how-we-work" class="page-view" data-route="/how-we-work">
+      <div class="section-pad">
+        <div class="container">
+          <span class="label-mono" style="margin-bottom: 1rem;"><span class="sec-num">METHODOLOGY</span> OPERATING SYSTEM</span>
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 1.5rem;">
+            Founder-led, <span class="marker-highlight">structured</span>, <em>accountable.</em>
+          </h1>
+          <p class="body-lg" style="max-width: 60ch; color: var(--slate); margin-bottom: 4.5rem;">
+            You don't get pitched by a senior partner and handed off to an unvetted junior account manager. Every Dissolvers engagement is led directly by Soumya Ranjan Behera with transparent weekly reporting.
+          </p>
+
+          <div class="process-line-grid" style="margin-bottom: 5rem;">
+            <div class="process-node">
+              <div class="process-node-dot">01</div>
+              <h2 class="display-md" style="margin-bottom: 0.75rem;">Understand</h2>
+              <p class="body-md" style="color: var(--slate);">
+                We start with a technical and commercial intake: understanding your product, target segment (B2B buyers, AI engineers, or protocol builders), and what meaningful distribution in India looks like for your stage.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">02</div>
+              <h2 class="display-md" style="margin-bottom: 0.75rem;"><em>Map</em></h2>
+              <p class="body-md" style="color: var(--slate);">
+                We build a bespoke target list—mapping potential channel partners, regional communities, university clubs, event formats and narrative hooks tailored to Indian realities.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">03</div>
+              <h2 class="display-md" style="margin-bottom: 0.75rem;">Engage</h2>
+              <p class="body-md" style="color: var(--slate);">
+                We initiate qualified outreach, facilitate warm partner meetings, seed regional community channels, and test narrative angles directly with local operators and developers.
+              </p>
+            </div>
+            <div class="process-node">
+              <div class="process-node-dot">04</div>
+              <h2 class="display-md" style="margin-bottom: 0.75rem;"><em>Activate</em></h2>
+              <p class="body-md" style="color: var(--slate);">
+                We turn relationships into live programmes—whether that is an active reseller/referral pipeline, a 10-university builder roadshow, or a flagship hacker house—tracked in a shared workspace.
+              </p>
+            </div>
+          </div>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3.5rem;">
+            <div class="col-5">
+              <span class="label-mono"><span class="sec-num">GUARDRAILS</span> WHAT TO EXPECT</span>
+              <h2 class="display-lg" style="margin-top: 0.75rem;">Our honest <em>operating rules.</em></h2>
+            </div>
+            <div class="col-7">
+              <ul class="fact-list">
+                <li><span><strong>No Fake Client Logos:</strong> We clearly distinguish between our founder's pre-agency ecosystem track record and agency engagements.</span></li>
+                <li><span><strong>Realistic Positioning:</strong> We commit to rigorous research, partner qualification, outreach, event execution and pipeline tracking—never fabricated revenue guarantees.</span></li>
+                <li><span><strong>Shared Live Workspace:</strong> Every partner lead, university contact, event checklist and content draft lives in a shared Notion/CRM hub you own.</span></li>
+                <li><span><strong>Pan-India Reach:</strong> From Bengaluru, Mumbai and Delhi-NCR to high-growth engineering hubs like Bhubaneswar, Pune, Hyderabad and Chennai.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-navy section-pad-sm">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:2rem;">
+          <div>
+            <h2 class="display-lg">See if our working style <em>fits your team.</em></h2>
+            <p class="body-md" style="color: rgba(247,247,242,0.8); margin-top: 0.4rem;">Book a 30-minute intro call directly with Soumya.</p>
+          </div>
+          <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <span>Book an Intro Call</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 12: INSIGHTS (#/insights)
+         ======================================================================== -->
+    <section id="view-insights" class="page-view" data-route="/insights">
+      <div class="section-pad">
+        <div class="container">
+          <span class="label-mono" style="margin-bottom: 1rem;"><span class="sec-num">INSIGHTS</span> FIELD NOTES &amp; RESEARCH</span>
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 1.5rem;">
+            Notes on <span class="marker-highlight">India</span> distribution.
+          </h1>
+          <p class="body-lg" style="max-width: 60ch; color: var(--slate); margin-bottom: 4rem;">
+            Practical perspectives on ecosystem partnerships, developer onboarding, regional communities and technical storytelling from our work on the ground.
+          </p>
+
+          <!-- Editorial Essay 01 -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-4">
+                <span class="label-mono">ESSAY 01 • MARKET ENTRY</span>
+                <p style="font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem;">By Soumya Ranjan Behera</p>
+              </div>
+              <div class="col-8">
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Why Tier-2 university hubs are India's highest-leverage builder secret.</h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.25rem;">
+                  Most foreign teams land in Bengaluru, host one expensive dinner, and wonder why developer retention drops off two weeks later. While Bengaluru remains indispensable for senior operators and partnerships, Tier-2 engineering hubs offer hungry, deeply committed student and early-career builders who stay loyal to the ecosystems that invest in teaching them first.
+                </p>
+                <p class="body-md" style="color: var(--slate);">
+                  When we onboarded 10+ universities and launched dedicated campus clubs during Arbitrum Launchpad India, the highest workshop-to-submission conversion came from campuses where we paired hands-on buildstations with ongoing local club leadership.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Editorial Essay 02 -->
+          <article class="work-entry">
+            <div class="editorial-grid">
+              <div class="col-4">
+                <span class="label-mono">ESSAY 02 • PARTNERSHIPS</span>
+                <p style="font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem;">By Soumya Ranjan Behera</p>
+              </div>
+              <div class="col-8">
+                <h2 class="display-lg" style="margin-bottom: 1rem;">Qualification over volume: How to structure B2B and ecosystem partnerships in India.</h2>
+                <p class="body-md" style="color: var(--slate); margin-bottom: 1.25rem;">
+                  A logo swap announcement on X is not a partnership. Real distribution partnerships in India—whether with dev agencies, system integrators, regional communities or complementary SaaS tools—only move the needle when both sides agree on a concrete activation plan within the first 30 days.
+                </p>
+                <p class="body-md" style="color: var(--slate);">
+                  Before signing any partner MOU, we qualify four things: audience overlap, technical readiness, co-marketing or referral bandwidth, and a named point-of-contact who owns the relationship week to week.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Published Technical Articles Links -->
+          <article class="work-entry" style="border-bottom: 1px solid var(--border-hairline);">
+            <div class="editorial-grid">
+              <div class="col-4">
+                <span class="label-mono">PUBLISHED DEEP DIVES</span>
+                <p style="font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem;">External Publications</p>
+              </div>
+              <div class="col-8">
+                <h2 class="display-md" style="margin-bottom: 1.25rem;">Selected Technical Articles &amp; Award-Winning Threads</h2>
+                <ul class="fact-list">
+                  <li>
+                    <span>Unleashing the Power of Gear.exe: A New Era of Computation for Ethereum dApps (Dev.to)</span>
+                    <a href="https://dev.to/srobver/unleashing-the-power-of-gearexe-a-new-era-of-computation-for-ethereum-dapps-5g79" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Read Article ↗</a>
+                  </li>
+                  <li>
+                    <span>Exploring the Advantages of Gear's Actor Model in Vara Network (Dev.to)</span>
+                    <a href="https://dev.to/srobver/exploring-the-advantages-of-gears-actor-model-in-vara-network-444f" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Read Article ↗</a>
+                  </li>
+                  <li>
+                    <span>Celestia Architecture &amp; Ecosystem Deep Dive (Bounty Winner, 250+ submissions)</span>
+                    <a href="https://x.com/SRobver/status/1907108284009496747" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Read on X ↗</a>
+                  </li>
+                  <li>
+                    <span>Push Chain Universal State &amp; Cross-Chain Narrative (Bounty Winner, 200+ submissions)</span>
+                    <a href="https://x.com/SRobver/status/1897552128975233339" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Read on X ↗</a>
+                  </li>
+                  <li>
+                    <span>Okto Chain Abstraction Deep Dive (Reshared by Official Account)</span>
+                    <a href="https://x.com/SRobver/status/1866597351827312949" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Read on X ↗</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 13: ABOUT (#/about)
+         ======================================================================== -->
+    <section id="view-about" class="page-view" data-route="/about">
+      <div class="section-pad">
+        <div class="container">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem;">
+            <span class="label-mono"><span class="sec-num">ABOUT</span> DISSOLVERS &amp; FOUNDER</span>
+            <span class="sticker-pill">Superteam Member</span>
+          </div>
+
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 2rem;">
+            Built by an <span class="marker-highlight">operator</span>, <em>not a middleman.</em>
+          </h1>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3.5rem; margin-bottom: 4.5rem;">
+            <div class="col-5">
+              <span class="label-mono" style="margin-bottom: 0.75rem;">THE FOUNDER</span>
+              <h2 class="display-lg" style="margin-bottom: 0.5rem;">Soumya Ranjan Behera</h2>
+              <p style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--teal); font-weight: 600; margin-bottom: 1.5rem;">
+                @SRobver • Superteam Member • AI x Web3 Ecosystem Operator
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap: 1rem;">
+                <a href="https://x.com/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">X (@SRobver) ↗</a>
+                <a href="https://t.me/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Telegram ↗</a>
+                <a href="https://luma.com/user/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">Luma ↗</a>
+              </div>
+            </div>
+            <div class="col-7">
+              <p class="body-lg" style="margin-bottom: 1.5rem;">
+                Dissolvers was started to solve a recurring problem for global organizations looking at India and international growth: they know the talent and market density are massive, but they lack a trustworthy, on-ground operator who can bridge partnerships, developer communities, events, narrative and data-driven consultation without agency bloat.
+              </p>
+              <p class="body-md" style="color: var(--slate); margin-bottom: 1.5rem;">
+                Before launching Dissolvers, Soumya Ranjan Behera spent years on the ground executing programmes across the ecosystem—leading Arbitrum Launchpad India across 10+ universities, founding Odisha DAO (0 to 1,000+ members), co-organising the Core DAO Hacker House in Bangalore and OnchAIn Island in Andaman &amp; Nicobar, and contributing across ecosystems including Arbitrum, Nillion, Aptos, Base, Avalanche, CoinEx, ETHGlobal, Vara/Gear Foundation, Superteam, Core DAO, Bitget Wallet, OrbitX and Cluster Protocol.
+              </p>
+              <p class="body-md" style="color: var(--slate);">
+                Helping founders: we operate to go global, working directly with founders, GTM leads, and heads of ecosystem from North America, Europe, Asia-Pacific, the Middle East &amp; Africa and Latin America.
+              </p>
+            </div>
+          </div>
+
+          <div class="bento-grid">
+            <div class="bento-cell bento-span-4">
+              <span class="label-mono">01 / HONEST ATTRIBUTION</span>
+              <p class="body-md" style="color: var(--slate);">
+                No inflated decks or borrowed logos. We tell you clearly what we have built personally, how we work, and what is realistic for your timeline.
+              </p>
+            </div>
+            <div class="bento-cell bento-span-4">
+              <span class="label-mono">02 / PAN-INDIA NETWORK</span>
+              <p class="body-md" style="color: var(--slate);">
+                Active relationships across Tier-1 hubs (Bengaluru, Delhi-NCR, Mumbai, Hyderabad) and high-velocity campus and developer communities nationwide.
+              </p>
+            </div>
+            <div class="bento-cell bento-span-4">
+              <span class="label-mono">03 / FULL-STACK GTM</span>
+              <p class="body-md" style="color: var(--slate);">
+                Because partnerships, community, hackathons, events and technical content reinforce each other, we coordinate them under one roof.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 14: CONTACT (#/contact)
+         ======================================================================== -->
+    <section id="view-contact" class="page-view" data-route="/contact">
+      <div class="section-pad">
+        <div class="container">
+          <span class="label-mono" style="margin-bottom: 1rem;"><span class="sec-num">CONTACT</span> START A CONVERSATION</span>
+          <h1 class="display-hero" style="max-width: 14ch; margin-bottom: 2rem;">
+            Let's talk about <span class="marker-highlight">India</span>.
+          </h1>
+
+          <div class="editorial-grid" style="border-top: 1px solid var(--border-hairline); padding-top: 3.5rem;">
+            <div class="col-5">
+              <h2 class="display-md" style="margin-bottom: 1rem;">Fastest route: <em>Book a 30-min call.</em></h2>
+              <p class="body-md" style="color: var(--slate); margin-bottom: 2rem;">
+                Pick a slot directly on Soumya's calendar, or reach out via X, Telegram or email. We work with teams across North America, Europe, APAC, MEA and LATAM.
+              </p>
+
+              <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-bottom: 2.5rem;">
+                <span>Book an Intro Call on Calendly</span>
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              </a>
+
+              <ul class="fact-list">
+                <li>
+                  <span>Email</span>
+                  <a href="mailto:[hello@yourdomain.com]" class="text-link-arrow">[hello@yourdomain.com]</a>
+                </li>
+                <li>
+                  <span>X (Twitter)</span>
+                  <a href="https://x.com/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">@SRobver ↗</a>
+                </li>
+                <li>
+                  <span>Telegram</span>
+                  <a href="https://t.me/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">t.me/SRobver ↗</a>
+                </li>
+                <li>
+                  <span>Luma</span>
+                  <a href="https://luma.com/user/SRobver" target="_blank" rel="noopener noreferrer" class="text-link-arrow">luma.com/user/SRobver ↗</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-7">
+              <div style="border: 1px solid var(--navy); padding: clamp(1.5rem, 3.5vw, 3rem); background-color: var(--off-white);">
+                <span class="label-mono" style="margin-bottom: 1.5rem;">SEND A BRIEF</span>
+                <form id="contact-brief-form" class="editorial-form" novalidate>
+                  <div class="form-group">
+                    <label for="input-name" class="form-label">Your Name *</label>
+                    <input type="text" id="input-name" name="name" class="form-control" required placeholder="Jane Doe" />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-company" class="form-label">Company / Protocol &amp; Website *</label>
+                    <input type="text" id="input-company" name="company" class="form-control" required placeholder="Acme AI (https://acme.ai)" />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-region" class="form-label">Your Current Region</label>
+                    <select id="input-region" name="region" class="form-control">
+                      <option value="North America">North America</option>
+                      <option value="Europe">Europe</option>
+                      <option value="Asia-Pacific">Asia-Pacific (including India)</option>
+                      <option value="Middle East & Africa">Middle East &amp; Africa</option>
+                      <option value="Latin America">Latin America</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="input-pillar" class="form-label">Primary Interest</label>
+                    <select id="input-pillar" name="pillar" class="form-control">
+                      <option value="01 India Market Entry Sprint">01 — India Market Entry Sprint</option>
+                      <option value="02 Partnerships & Channel Development">02 — Partnerships &amp; Channel Development</option>
+                      <option value="03 Ecosystem & Community Growth">03 — Ecosystem &amp; Community Growth</option>
+                      <option value="04 Builder Programmes & Hackathons">04 — Builder Programmes &amp; Hackathons</option>
+                      <option value="05 Events & Launch Activations">05 — Events &amp; Launch Activations</option>
+                      <option value="06 Content & Narrative">06 — Content &amp; Narrative</option>
+                      <option value="07 Consultation">07 — Consultation (Data-Driven Scaling)</option>
+                      <option value="Multi-Pillar / Custom Scope">Multi-Pillar / Exploring Other Markets</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="input-goals" class="form-label">What are your goals for India? *</label>
+                    <textarea id="input-goals" name="goals" rows="4" class="form-control" required placeholder="Tell us briefly about your product, target users/builders, and timeline..."></textarea>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn-primary">
+                      <span>Prepare Email Brief</span>
+                    </button>
+                  </div>
+                  <div id="form-feedback" role="status" aria-live="polite" style="display:none; padding: 1rem; border: 1px solid var(--teal); background: rgba(23,107,104,0.08); font-size: 0.9rem;"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 15: 404 NOT FOUND
+         ======================================================================== -->
+    <section id="view-404" class="page-view" data-route="/404">
+      <div class="section-pad">
+        <div class="container" style="text-align:center;">
+          <span class="sticker-pill" style="margin-bottom: 1.5rem;">404 — Route Not Found</span>
+          <h1 class="display-xl" style="margin-bottom: 1rem;">This page got <em>dissolved.</em></h1>
+          <p class="body-lg" style="color: var(--slate); max-width: 44ch; margin: 0 auto 2.5rem;">
+            The link you followed doesn't match an active route. Head back home or explore our six services below.
+          </p>
+          <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+            <a href="#/" class="btn-primary"><span>Return Home</span></a>
+            <a href="#/services" class="btn-outline"><span>View Services</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container" style="padding-top: 4.5rem; padding-bottom: 2.5rem;">
+      <div class="editorial-grid" style="padding-bottom: 3.5rem; border-bottom: 1px solid var(--border-hairline-dark);">
+        <!-- Brand Column -->
+        <div class="col-4">
+          <a href="#/" style="display:inline-flex; align-items:center; gap:0.9rem; margin-bottom:1.25rem;">
+            <img 
+              src="logo.png" 
+              alt="Dissolvers logo" 
+              style="height: 54px; width: auto; object-fit: contain;"
+            />
+            <span class="serif" style="font-size: 2.35rem; color: var(--off-white);" data-brand-text>Dissolvers</span>
+          </a>
+          <p class="body-md" style="color: rgba(247, 247, 242, 0.72); max-width: 34ch; margin-bottom: 1.5rem;">
+            Distribution in India and across the globe, built through people. Ecosystem partnerships, community, builder programmes, events, content and consultation.
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span class="sticker-pill">Helping Founders</span>
+            <span class="sticker-pill teal-pill">Go Global</span>
+          </div>
+        </div>
+
+        <!-- Services Links -->
+        <div class="col-4">
+          <span class="label-mono" style="margin-bottom: 1rem; display:block;">SERVICES</span>
+          <ul style="display:grid; gap:0.65rem; font-size:0.92rem;">
+            <li><a href="#/services">All Services Overview</a></li>
+            <li><a href="#/services/market-entry">01 — India Market Entry Sprint</a></li>
+            <li><a href="#/services/partnerships">02 — Partnerships &amp; Channel Development</a></li>
+            <li><a href="#/services/ecosystem-community">03 — Ecosystem &amp; Community Growth</a></li>
+            <li><a href="#/services/builder-programmes">04 — Builder Programmes &amp; Hackathons</a></li>
+            <li><a href="#/services/events-activations">05 — Events &amp; Launch Activations</a></li>
+            <li><a href="#/services/content-narrative">06 — Content &amp; Narrative</a></li>
+            <li><a href="#/services/consultation">07 — Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Pages & Direct Connect -->
+        <div class="col-4">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <span class="label-mono" style="margin-bottom: 1rem; display:block;">NAVIGATION</span>
+              <ul style="display:grid; gap:0.65rem; font-size:0.92rem;">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/work">Work (Founder Experience)</a></li>
+                <li><a href="#/events">Events</a></li>
+                <li><a href="#/how-we-work">How We Work</a></li>
+                <li><a href="#/insights">Insights</a></li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/contact">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <span class="label-mono" style="margin-bottom: 1rem; display:block;">CONNECT</span>
+              <ul style="display:grid; gap:0.65rem; font-size:0.92rem;">
+                <li><a href="mailto:[hello@yourdomain.com]" style="color:var(--yellow);">[hello@yourdomain.com]</a></li>
+                <li><a href="https://x.com/SRobver" target="_blank" rel="noopener noreferrer">X (@SRobver) ↗</a></li>
+                <li><a href="https://t.me/SRobver" target="_blank" rel="noopener noreferrer">Telegram ↗</a></li>
+                <li><a href="https://luma.com/user/SRobver" target="_blank" rel="noopener noreferrer">Luma ↗</a></li>
+                <li><a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer">Book Intro Call ↗</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giant Outlined Wordmark that fills with colour on hover -->
+      <a href="#/" style="display:block;" aria-label="Dissolvers Top of Page">
+        <div class="footer-giant-wordmark" data-brand-text>Dissolvers</div>
+      </a>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; padding-top:1.5rem; border-top:1px solid var(--border-hairline-dark); font-size:0.82rem; color:rgba(247,247,242,0.6);">
+        <div>&copy; <span id="current-year">2026</span> <span data-brand-text>Dissolvers</span>. All rights reserved.</div>
+        <div>Founder: Soumya Ranjan Behera (@SRobver) • Go Global</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT (BRAND CONSTANT, ROUTER, INTERACTIONS, OBSERVERS)
+       ========================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* 1. Brand Constant */
+      const BRAND = "Dissolvers";
+      document.documentElement.style.setProperty('--brand-name', `"${BRAND}"`);
+      document.querySelectorAll('[data-brand-text]').forEach(el => {
+        el.textContent = BRAND;
+      });
+
+      /* Set Current Year in Footer */
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      /* 2. Route Registry & Page Titles */
+      const ROUTES = {
+        '/': {
+          viewId: 'view-home',
+          title: `${BRAND} — Distribution in India and across the globe, built through people.`
+        },
+        '/services': {
+          viewId: 'view-services',
+          title: `Services — ${BRAND}`
+        },
+        '/services/market-entry': {
+          viewId: 'view-service-market-entry',
+          title: `01 India Market Entry Sprint — ${BRAND}`
+        },
+        '/services/partnerships': {
+          viewId: 'view-service-partnerships',
+          title: `02 Partnerships & Channel Development — ${BRAND}`
+        },
+        '/services/ecosystem-community': {
+          viewId: 'view-service-ecosystem-community',
+          title: `03 Ecosystem & Community Growth — ${BRAND}`
+        },
+        '/services/builder-programmes': {
+          viewId: 'view-service-builder-programmes',
+          title: `04 Builder Programmes & Hackathons — ${BRAND}`
+        },
+        '/services/events-activations': {
+          viewId: 'view-service-events-activations',
+          title: `05 Events & Launch Activations — ${BRAND}`
+        },
+        '/services/content-narrative': {
+          viewId: 'view-service-content-narrative',
+          title: `06 Content & Narrative — ${BRAND}`
+        },
+        '/services/consultation': {
+          viewId: 'view-service-consultation',
+          title: `07 Consultation — ${BRAND}`
+        },
+        '/work': {
+          viewId: 'view-work',
+          title: `Work (Founder Experience) — ${BRAND}`
+        },
+        '/events': {
+          viewId: 'view-events',
+          title: `Events Track Record — ${BRAND}`
+        },
+        '/how-we-work': {
+          viewId: 'view-how-we-work',
+          title: `How We Work — ${BRAND}`
+        },
+        '/insights': {
+          viewId: 'view-insights',
+          title: `Insights — ${BRAND}`
+        },
+        '/about': {
+          viewId: 'view-about',
+          title: `About — ${BRAND}`
+        },
+        '/contact': {
+          viewId: 'view-contact',
+          title: `Contact — ${BRAND}`
+        }
+      };
+
+      const prefersReducedMotion = false;
+      const wipeEl = document.getElementById('page-wipe');
+      let isInitialLoad = true;
+
+      /* 3. Hash Router Execution */
+      function normalizeHash(rawHash) {
+        if (!rawHash || rawHash === '#' || rawHash === '#/') return '/';
+        let path = rawHash.replace(/^#/, '').trim();
+        if (!path.startsWith('/')) path = '/' + path;
+        if (path.length > 1 && path.endsWith('/')) {
+          path = path.slice(0, -1);
+        }
+        return path.toLowerCase();
+      }
+
+      let currentRenderedPath = null;
+
+      function navigateToRoute(rawHashOrPath, forceRender) {
+        const path = normalizeHash(rawHashOrPath);
+        if (!forceRender && path === currentRenderedPath && !isInitialLoad) {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+          return;
+        }
+        currentRenderedPath = path;
+
+        const routeConfig = ROUTES[path] || {
+          viewId: 'view-404',
+          title: `Page Not Found — ${BRAND}`
+        };
+
+        // Trigger horizontal line wipe on navigation after initial load
+        if (!isInitialLoad && !prefersReducedMotion && wipeEl) {
+          wipeEl.classList.remove('is-wiping');
+          void wipeEl.offsetWidth;
+          wipeEl.classList.add('is-wiping');
+        }
+
+        // Hide all views and activate target view
+        document.querySelectorAll('.page-view').forEach(section => {
+          section.classList.remove('is-active');
+        });
+        const activeView = document.getElementById(routeConfig.viewId);
+        if (activeView) {
+          activeView.classList.add('is-active');
+        }
+
+        // Update Document Title
+        document.title = routeConfig.title;
+
+        // Update Active State in Desktop Nav
+        document.querySelectorAll('[data-nav-route]').forEach(link => {
+          const linkRoute = link.getAttribute('data-nav-route');
+          if (linkRoute === path) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // Close mobile overlay or desktop dropdown if open
+        closeMobileMenu();
+        closeDesktopDropdown();
+
+        // Scroll reset to top
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+        // Re-trigger animations on Home view
+        if (path === '/') {
+          triggerHeroSplit();
+        }
+        observeCountersAndDividers();
+
+        isInitialLoad = false;
+      }
+
+      function renderRoute() {
+        navigateToRoute(window.location.hash || '#/', true);
+      }
+
+      window.addEventListener('hashchange', () => {
+        navigateToRoute(window.location.hash);
+      });
+
+      /* Direct click delegation for all internal #/... links so navigation always works in sandboxed iframes */
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#/"]');
+        if (!link) return;
+        const targetHash = link.getAttribute('href');
+        if (!targetHash) return;
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.location.hash !== targetHash) {
+          try {
+            history.pushState(null, '', targetHash);
+          } catch (err) {
+            window.location.hash = targetHash;
+          }
+        }
+        navigateToRoute(targetHash, true);
+      });
+
+      /* 4. Signature Motif: "THE SPLIT" Hero Animation */
+      function triggerHeroSplit() {
+        const heroContainer = document.getElementById('hero-split-container');
+        if (!heroContainer) return;
+        heroContainer.classList.remove('hero-split-loaded');
+        setTimeout(() => {
+          heroContainer.classList.add('hero-split-loaded');
+        }, 180);
+      }
+
+      /* 5. IntersectionObservers for Stat Counters & Slice Dividers */
+      function animateCounter(el) {
+        if (el.dataset.counted === 'true') return;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        if (isNaN(target)) return;
+        el.dataset.counted = 'true';
+
+        const duration = 1400;
+        const startTime = performance.now();
+
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
+      function observeCountersAndDividers() {
+        // Reset counters when returning to home so they animate cleanly
+        document.querySelectorAll('[data-count]').forEach(el => {
+          el.dataset.counted = 'false';
+          el.textContent = '0';
+        });
+        document.querySelectorAll('.slice-divider').forEach(div => {
+          div.classList.remove('is-sliced');
+        });
+
+        if (!('IntersectionObserver' in window)) {
+          document.querySelectorAll('[data-count]').forEach(animateCounter);
+          document.querySelectorAll('.slice-divider').forEach(d => d.classList.add('is-sliced'));
+          return;
+        }
+
+        const counterObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('[data-count]').forEach(el => {
+          counterObserver.observe(el);
+        });
+
+        const dividerObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-sliced');
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.slice-divider').forEach(div => {
+          dividerObserver.observe(div);
+        });
+      }
+
+      /* 6. Accessible Desktop Dropdown & Mobile Overlay Navigation */
+      const dropdownWrap = document.getElementById('services-dropdown');
+      const dropdownBtn = document.getElementById('services-dropdown-btn');
+
+      function closeDesktopDropdown() {
+        if (dropdownWrap && dropdownBtn) {
+          dropdownWrap.classList.remove('is-open');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      if (dropdownBtn && dropdownWrap) {
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdownWrap.classList.toggle('is-open');
+          dropdownBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        dropdownWrap.addEventListener('mouseenter', () => {
+          dropdownWrap.classList.add('is-open');
+          dropdownBtn.setAttribute('aria-expanded', 'true');
+        });
+
+        dropdownWrap.addEventListener('mouseleave', () => {
+          dropdownWrap.classList.remove('is-open');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!dropdownWrap.contains(e.target)) {
+            closeDesktopDropdown();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeDesktopDropdown();
+            closeMobileMenu();
+          }
+        });
+      }
+
+      const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileOverlay = document.getElementById('mobile-overlay');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileAccBtn = document.getElementById('mobile-services-acc');
+      const mobileAccPanel = document.getElementById('mobile-services-panel');
+
+      function closeMobileMenu() {
+        if (!mobileOverlay || !mobileToggleBtn) return;
+        mobileOverlay.classList.remove('is-open');
+        mobileOverlay.setAttribute('aria-hidden', 'true');
+        mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        if (iconOpen && iconClose) {
+          iconOpen.style.display = 'block';
+          iconClose.style.display = 'none';
+        }
+        document.body.style.overflow = '';
+      }
+
+      if (mobileToggleBtn && mobileOverlay) {
+        mobileToggleBtn.addEventListener('click', () => {
+          const isOpen = mobileOverlay.classList.toggle('is-open');
+          mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
+          mobileToggleBtn.setAttribute('aria-expanded', String(isOpen));
+          if (iconOpen && iconClose) {
+            iconOpen.style.display = isOpen ? 'none' : 'block';
+            iconClose.style.display = isOpen ? 'block' : 'none';
+          }
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+      }
+
+      if (mobileAccBtn && mobileAccPanel) {
+        mobileAccBtn.addEventListener('click', () => {
+          const isOpen = mobileAccPanel.classList.toggle('is-open');
+          mobileAccBtn.setAttribute('aria-expanded', String(isOpen));
+          const sign = mobileAccBtn.querySelector('span:last-child');
+          if (sign) sign.textContent = isOpen ? '—' : '+';
+        });
+      }
+
+      /* 7. Custom Cursor (Desktop Only) */
+      const cursorEl = document.getElementById('custom-cursor');
+      if (cursorEl && !prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        window.addEventListener('mousemove', (e) => {
+          cursorEl.style.left = e.clientX + 'px';
+          cursorEl.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mouseover', (e) => {
+          const interactive = e.target.closest('a, button, input, select, textarea, .service-row, .footer-giant-wordmark');
+          if (interactive) {
+            cursorEl.classList.add('is-hovered');
+          } else {
+            cursorEl.classList.remove('is-hovered');
+          }
+        });
+      }
+
+      /* 8. Contact Form Handler (No alert(), accessible status box) */
+      const contactForm = document.getElementById('contact-brief-form');
+      const formFeedback = document.getElementById('form-feedback');
+
+      if (contactForm && formFeedback) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('input-name').value.trim();
+          const company = document.getElementById('input-company').value.trim();
+          const region = document.getElementById('input-region').value;
+          const pillar = document.getElementById('input-pillar').value;
+          const goals = document.getElementById('input-goals').value.trim();
+
+          if (!name || !company || !goals) {
+            formFeedback.style.display = 'block';
+            formFeedback.style.borderColor = '#142B3B';
+            formFeedback.textContent = 'Please complete your name, company/website, and India goals before continuing.';
+            return;
+          }
+
+          const subject = encodeURIComponent(`Dissolvers India Brief — ${company}`);
+          const body = encodeURIComponent(
+            `Name: ${name}\nCompany: ${company}\nRegion: ${region}\nService Pillar: ${pillar}\n\nIndia Goals:\n${goals}`
+          );
+
+          formFeedback.style.display = 'block';
+          formFeedback.innerHTML = `Brief ready! Opening your email client addressed to <strong>[hello@yourdomain.com]</strong>, or you can <a href="https://calendly.com/soumyaranjanbehera920/30min" target="_blank" rel="noopener noreferrer" style="text-decoration:underline; font-weight:600;">book directly on Calendly here ↗</a>.`;
+
+          window.location.href = `mailto:[hello@yourdomain.com]?subject=${subject}&body=${body}`;
+        });
+      }
+
+      /* Initialize on DOM Load */
+      renderRoute();
+    })();
+  </script>
+</body>
+</html>
